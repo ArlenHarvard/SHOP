@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import detail_view, index_view  # убедись, что эти вьюхи есть
+from .views import detail_view, index_view
 
 urlpatterns = [
     path('', index_view, name='index'),

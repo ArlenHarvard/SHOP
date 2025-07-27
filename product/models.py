@@ -2,10 +2,15 @@ from django.db import models
 from django.db.models import ForeignKey
 from .constants import NULLABLE
 
-
 class Category(models.Model):
     title = models.CharField(max_length=50, verbose_name='Название')
-    parent_category = models.ForeignKey('self', on_delete=models.CASCADE, **NULLABLE, verbose_name='Родительская категория')
+    image = models.ImageField(upload_to='media/category_image', verbose_name='Изображение')
+    parent_category = models.ForeignKey(
+        'self',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        verbose_name='Родительская категория')
 
     class Meta:
         verbose_name = 'Категория'
