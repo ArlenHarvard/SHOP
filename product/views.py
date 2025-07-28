@@ -12,7 +12,7 @@ def index_view(request):
     if category_id:
         estates = Estate.objects.filter(category_id=category_id, is_active=True)
     else:
-        estates = Estate.objects.all() # Показываем первые 8
+        estates = Estate.objects.filter(is_active=True)[:8]
     categories = Category.objects.all()
 
     return render(
