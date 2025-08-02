@@ -3,177 +3,157 @@
 
 {% block content %}
 
-    <!-- Start Banner Hero -->
+    <!-- Баннер -->
     <div id="work_single_banner" class="bg-light w-100">
         <div class="container-fluid text-light d-flex justify-content-center align-items-center border-0 rounded-0 p-0 py-5">
             <div class="banner-content col-lg-8 m-lg-auto text-center py-5 px-3">
-                <h1 class="banner-heading h2 pb-5 typo-space-line-center">Digital Marketing</<h1>
-                </h1>
-                <h3 class="h4 pb-2 light-300">Voluptatem accusantium doloremque</h3>
-                <p class="banner-footer light-300">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Integer ut ipsum eu libero venenatis euismod.
+                <h1 class="banner-heading h2 pb-5 typo-space-line-center text-white">Продажа квартир и домов</h1>
+                <h3 class="h4 pb-2 light-300 text-white">Лучшие варианты недвижимости в вашем городе</h3>
+                <p class="banner-footer light-300 text-white">
+                    Мы предлагаем большой выбор квартир и домов от надёжных застройщиков и собственников.
+                    Подберём для вас комфортное жильё с учётом всех пожеланий и бюджета.
+                    С нами покупка недвижимости — просто и безопасно!
                 </p>
             </div>
         </div>
     </div>
-    <!-- End Banner Hero -->
+    <!-- Конец баннера -->
 
-    <!-- Start Work Sigle -->
+
+
+
+    <!-- Раздел: Описание -->
     <section class="container py-5">
 
         <div class="row pt-5">
             <div class="worksingle-content col-lg-8 m-auto text-left justify-content-center">
-                <h2 class="worksingle-heading h3 pb-3 light-300 typo-space-line">Digital Marketing Service</h2>
+                <h2 class="worksingle-heading h3 pb-3 light-300 typo-space-line">Наши предложения</h2>
                 <p class="worksingle-footer py-3 text-muted light-300">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Мы предлагаем широкий выбор квартир и домов для покупки и аренды.
+                    Уютные квартиры в центре города, просторные дома для семейной жизни и современные новостройки.
+                    Юридическое сопровождение и помощь на каждом этапе сделки.
                 </p>
             </div>
-        </div><!-- End Blog Cover -->
+        </div><!-- Конец описания -->
 
+    <!-- Раздел: Описание -->
+    <section class="container py-5">
+
+        <div class="row pt-5">
+            <div class="worksingle-content col-lg-8 m-auto text-left justify-content-center">
+                <h2 class="worksingle-heading h3 pb-3 light-300 typo-space-line">Наши услуги</h2>
+                <p class="worksingle-footer py-3 text-muted light-300">
+                    Мы помогаем купить или арендовать квартиры и дома в вашем городе.
+                    В нашей базе вы найдёте современные новостройки, уютные квартиры в центре и просторные дома для всей семьи.
+                    Мы предоставляем консультации и полное сопровождение сделок.
+                </p>
+            </div>
+        </div><!-- Конец описания -->
+
+        <!-- Галерея -->
         <div class="row justify-content-center pb-4">
             <div class="col-lg-8">
                 <div id="templatemo-slide-link-target" class="card mb-3">
-                    <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-04.jpg' %}" alt="Card image cap' %}">
+                    <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-04.jpg' %}" alt="Фото недвижимости">
                 </div>
                 <div class="worksingle-slide-footer row">
 
-                    <!--Start Controls-->
+                    <!-- Кнопка влево -->
                     <div class="col-1 align-self-center">
                         <a href="#multi-item-example" role="button" data-bs-slide="prev">
                             <i class='bx bxs-chevron-left bx-sm text-dark'></i>
                         </a>
                     </div>
-                    <!--End Controls-->
 
-                    <!--Start Carousel Wrapper-->
+                    <!-- Карусель -->
                     <div id="multi-item-example" class="col-10 carousel slide" data-bs-ride="carousel">
-                        <!--Start Slides-->
                         <div class="carousel-inner" role="listbox">
 
-                            <!--First slide-->
+                            <!-- Первая группа фото -->
                             <div class="carousel-item active">
                                 <div class="row">
                                     <div class="col">
                                         <a class="templatemo-slide-link" href="./assets/img/work-slide-06.jpg">
-                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-06-small.jpg' %}" alt="Product Image">
+                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-06-small.jpg' %}" alt="Квартира в новостройке">
                                         </a>
                                     </div>
                                     <div class="col">
                                         <a class="templatemo-slide-link" href="./assets/img/work-slide-05.jpg">
-                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-05-small.jpg' %}" alt="Product Image">
+                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-05-small.jpg' %}" alt="Современная кухня">
                                         </a>
                                     </div>
                                     <div class="col">
                                         <a class="templatemo-slide-link" href="./assets/img/work-slide-04.jpg">
-                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-04-small.jpg' %}" alt="Product Image">
+                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-04-small.jpg' %}" alt="Уютная гостиная">
                                         </a>
                                     </div>
                                     <div class="col">
                                         <a class="templatemo-slide-link" href="./assets/img/work-slide-03.jpg">
-                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-03-small.jpg' %}" alt="Product Image">
+                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-03-small.jpg' %}" alt="Светлая спальня">
                                         </a>
                                     </div>
                                     <div class="col">
                                         <a class="templatemo-slide-link" href="./assets/img/work-slide-01.jpg">
-                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-01-small.jpg' %}" alt="Product Image">
+                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-01-small.jpg' %}" alt="Балкон с видом на город">
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <!--/.First slide-->
 
-                            <!--Second slide-->
+                            <!-- Вторая группа фото -->
                             <div class="carousel-item">
                                 <div class="row">
                                     <div class="col">
                                         <a class="templatemo-slide-link" href="./assets/img/work-slide-01.jpg">
-                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-01-small.jpg' %}" alt="Product Image">
+                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-01-small.jpg' %}" alt="Квартира в центре города">
                                         </a>
                                     </div>
                                     <div class="col">
                                         <a class="templatemo-slide-link" href="./assets/img/work-slide-03.jpg">
-                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-03-small.jpg' %}" alt="Product Image">
+                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-03-small.jpg' %}" alt="Просторная гостиная">
                                         </a>
                                     </div>
                                     <div class="col">
                                         <a class="templatemo-slide-link" href="./assets/img/work-slide-02.jpg">
-                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-02-small.jpg' %}" alt="Product Image">
+                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-02-small.jpg' %}" alt="Элитный интерьер">
                                         </a>
                                     </div>
                                     <div class="col">
                                         <a class="templatemo-slide-link" href="./assets/img/work-slide-01.jpg">
-                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-01-small.jpg' %}" alt="Product Image">
+                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-01-small.jpg' %}" alt="Квартира в жилом комплексе">
                                         </a>
                                     </div>
                                     <div class="col">
                                         <a class="templatemo-slide-link" href="./assets/img/work-slide-06.jpg">
-                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-06-small.jpg' %}" alt="Product Image">
+                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-06-small.jpg' %}" alt="Дом с садом">
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <!--/.Second slide-->
-
-                            <!--Second slide-->
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-01.jpg">
-                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-01-small.jpg' %}" alt="Product Image">
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-03.jpg">
-                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-03-small.jpg' %}" alt="Product Image">
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-02.jpg">
-                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-02-small.jpg' %}" alt="Product Image">
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-01.jpg">
-                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-01-small.jpg' %}" alt="Product Image">
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-06.jpg">
-                                            <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-06-small.jpg' %}" alt="Product Image">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/.Second slide-->
 
                         </div>
-                        <!--End Slides-->
                     </div>
-                    <!--End Carousel Wrapper-->
 
-                    <!--Start Controls-->
+                    <!-- Кнопка вправо -->
                     <div class="col-1 align-self-center text-end">
                         <a href="#multi-item-example" role="button" data-bs-slide="next">
                             <i class='bx bxs-chevron-right bx-sm text-dark'></i>
                         </a>
                     </div>
-                    <!--End Controls-->
 
                 </div>
             </div>
-        </div><!-- End Slider -->
+        </div>
 
-        <div class="row">
+    </section>
+    <!-- Конец раздела -->
+
+                <div class="row">
             <div class="col-md-8 m-auto text-left justify-content-center">
                 <p class="pt-5 text-muted light-300">
-                    You are permitted to download, modify and use Purple Buzz template for your websites. You are <strong>not permitted</strong> to re-distribute this template ZIP file on any other template websites. It is super easy to simply copy and repost the ZIP file on any <a rel="nofollow" href="https://www.google.com/search?q=free+css" target="_blank">Free CSS</a> template websites.
+                    Вы можете бесплатно просматривать и использовать наш сайт для поиска квартир и домов.
+                    <strong>Запрещается</strong> копировать и распространять материалы сайта на других ресурсах без нашего согласия.
+                    Мы стараемся сделать поиск жилья максимально удобным и простым для вас.
                 </p>
             </div>
         </div><!-- End Paragrph -->
@@ -183,24 +163,20 @@
             <div class="col-md-8 m-auto text-left justify-content-center">
                 <p class="display-6 py-4 ps-4 border border-5 border-top-0 border-end-0 border-bottom-0 border-start">
                     <i>
-                          "Vestibulum vestibulum est eu lorem laoreet suscipit. Duis auctor,
-                          metus vel sollicitudin hendrerit, elit neque pulvinar magna, non
-                          sodales orci turpis blandit quam."
+                          "Комфортное жильё начинается с правильного выбора.
+                          Мы помогаем каждому клиенту найти квартиру или дом своей мечты."
                       </i>
                 </p>
                 <p class="text-muted light-300">
-                    Nam tortor quam, aliquet vel nibh sit amet, faucibus bibendum nisl.
-                    Donec vehicula nulla justo, vel sodales massa vestibulum nec. Praesent
-                    non orci sed massa fringilla rutrum at et odio. Quisque est orci,
-                    elementum sed neque ac, suscipit consectetur leo. Cras fermentum luctus
-                    cursus. Ut porta, augue vel tempus congue, augue purus vulputate ex,
-                    lacinia lobortis arcu metus sed lectus.
+                    У нас вы найдёте широкий выбор недвижимости на любой вкус и бюджет.
+                    Квартиры в центре города, уютные дома в пригороде и современные апартаменты — всё это доступно на нашей площадке.
+                    Мы гарантируем честные цены, прозрачные условия и профессиональное сопровождение сделки.
                 </p>
             </div>
         </div><!-- End Qute -->
 
 
-        <div class="row justify-content-center">
+         <div class="row justify-content-center">
             <div class="col-lg-8 pt-4 pb-4">
                 <div class="ratio ratio-16x9">
                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1z--ZRS5x5U" allowfullscreen></iframe>
@@ -211,13 +187,10 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 ml-auto mr-auto pt-3 pb-4">
                 <p class="text-muted light-300">
-                    Ed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas
-                    accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur
-                    adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
+                    Мы предлагаем только проверенные варианты жилья — квартиры и дома,
+                    которые соответствуют современным требованиям.
+                    Покупка или аренда недвижимости становится проще, удобнее и безопаснее.
+                    Наша цель — помочь вам найти жильё вашей мечты без лишних хлопот.
                 </p>
             </div>
         </div>
@@ -226,7 +199,7 @@
         <!-- Start Comment -->
         <div class="row justify-content-center">
             <div class="worksingle-comment-heading col-8 m-auto pb-3">
-                <h4 class="h5">Comments</h4>
+                <h4 class="h5">Комментарии</h4>
             </div>
         </div>
 
@@ -239,16 +212,15 @@
                     <div class="comment-body">
                         <div class="comment-header d-flex justify-content-between ms-3">
                             <div class="header text-start">
-                                <h5 class="h6">John Doe</h5>
-                                <p class="text-muted light-300">10 mins ago</p>
+                                <h5 class="h6">Иван Петров</h5>
+                                <p class="text-muted light-300">10 минут назад</p>
                             </div>
-                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Reply</a>
+                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Ответить</a>
                         </div>
                         <div class="footer">
                             <div class="card-body border ms-3 light-300">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco.
+                                Очень понравился выбор квартир, особенно варианты в центре.
+                                Цены доступные, описание совпадает с реальностью. Спасибо!
                             </div>
                         </div>
                     </div>
@@ -266,16 +238,15 @@
                     <div class="comment-body">
                         <div class="comment-header d-flex justify-content-between ms-3">
                             <div class="header text-start">
-                                <h5 class="h6">Jane Doe</h5>
-                                <p class="text-muted light-300">5 mins ago</p>
+                                <h5 class="h6">Анна Смирнова</h5>
+                                <p class="text-muted light-300">5 минут назад</p>
                             </div>
-                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Reply</a>
+                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Ответить</a>
                         </div>
                         <div class="footer">
                             <div class="card-body border ms-3 light-300">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis.
+                                Нашла здесь отличный дом для своей семьи.
+                                Сервис на высоком уровне, консультанты всегда на связи.
                             </div>
                         </div>
                     </div>
@@ -284,7 +255,7 @@
         </div><!-- End Comment -->
 
 
-        <div class="row pb-4">
+         <div class="row pb-4">
             <div class="col-lg-8 m-auto">
                 <div class="d-flex ml-4">
                     <div>
@@ -293,16 +264,15 @@
                     <div class="comment-body">
                         <div class="comment-header d-flex justify-content-between ms-3">
                             <div class="header text-start">
-                                <h5 class="h6">John Doe</h5>
-                                <p class="text-muted light-300">15 mins ago</p>
+                                <h5 class="h6">Алексей Иванов</h5>
+                                <p class="text-muted light-300">15 минут назад</p>
                             </div>
-                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Reply</a>
+                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Ответить</a>
                         </div>
                         <div class="footer">
                             <div class="card-body border ms-3 light-300">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco.
+                                Отличный сервис, всё подробно описано. Уже присмотрел квартиру для покупки,
+                                думаю скоро заключать сделку.
                             </div>
                         </div>
                     </div>
@@ -320,16 +290,15 @@
                     <div class="comment-body">
                         <div class="comment-header d-flex justify-content-between ms-3">
                             <div class="header text-start">
-                                <h5 class="h6">Jane Doe</h5>
-                                <p class="text-muted light-300">16 mins ago</p>
+                                <h5 class="h6">Мария Кузнецова</h5>
+                                <p class="text-muted light-300">16 минут назад</p>
                             </div>
-                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Reply</a>
+                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Ответить</a>
                         </div>
                         <div class="footer">
                             <div class="card-body border ms-3 light-300">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis.
+                                Благодарю за помощь в подборе жилья. Очень удобно,
+                                что всё можно посмотреть онлайн и получить консультацию сразу.
                             </div>
                         </div>
                     </div>
@@ -340,18 +309,18 @@
 
         <div class="row pb-4">
             <div class="worksingle-comment-footer col-lg-8 m-auto">
-                <h4 class="h5">Leave Comment</h4>
+                <h4 class="h5">Оставить комментарий</h4>
                 <form class="col-md-12 m-auto" method="POST" action="#" role="form">
 
                     <div class="form-group">
-                        <label class="pb-2 pt-sm-0 pt-4 light-300" for="inputmessage">Your Comment</label>
-                        <textarea class="form-control form-control-lg light-300" id="inputmessage" name="inputmessage" placeholder="Your Comment" rows="5"></textarea>
+                        <label class="pb-2 pt-sm-0 pt-4 light-300" for="inputmessage">Ваш комментарий</label>
+                        <textarea class="form-control form-control-lg light-300" id="inputmessage" name="inputmessage" placeholder="Ваш комментарий" rows="5"></textarea>
                     </div>
 
                     <div class="row py-4">
                         <div class="col-lg-6">
-                            <label class="pb-2 light-300" for="inputname">Name</label>
-                            <input type="text" class="form-control form-control-lg light-300" id="inputname" name="inputname" placeholder="Name">
+                            <label class="pb-2 light-300" for="inputname">Имя</label>
+                            <input type="text" class="form-control form-control-lg light-300" id="inputname" name="inputname" placeholder="Имя">
                         </div>
                         <div class="col-lg-6">
                             <label class="pb-2 pt-sm-0 pt-4 light-300" for="inputemail">Email</label>
@@ -361,85 +330,87 @@
 
                     <div class="form-row pt-2">
                         <div class="col-md-12 col-10 text-end">
-                            <button type="submit" class="btn btn-secondary text-white px-md-4 px-2 py-md-3 py-1 radius-0 light-300">Send Message</button>
+                            <button type="submit" class="btn btn-secondary text-white px-md-4 px-2 py-md-3 py-1 radius-0 light-300">Отправить</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div><!-- End Comment Form -->
 
-
     </section>
-    <!-- End Work Sigle -->
+    <!-- End Work Single -->
 
     <!-- Start Related Post -->
     <article class="container-fluid bg-light">
         <div class="container">
             <div class="worksingle-related-header row">
-                <h1 class="h2 py-5">Related Post</h1>
+                <h1 class="h2 py-5">Похожие статьи</h1>
                 <div class="col-md-12 text-left justify-content-center">
                     <div class="row gx-5">
 
+                        <div class="col-sm-6 col-lg-4 mb-5">
+                            <a href="#" class="related-content card text-decoration-none overflow-hidden h-100">
+                                <img class="related-img card-img-top" src="{% static 'assets/img/related-post-01.jpg' %}" alt="Изображение карточки">
+                                <div class="related-body card-body p-4">
+                                    <h5 class="card-title h6 m-0 semi-bold-600 text-dark">Цифровой маркетинг</h5>
+                                    <p class="card-text pt-2 mb-1 light-300 text-dark">
+                                        Краткий обзор современных тенденций в маркетинге.
+                                    </p>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-primary light-300">Читать далее</span>
+                                        <div class="light-300">
+                                            <i class='bx-fw bx bx-heart me-1'></i>5
+                                            <i class='bx-fw bx bx-chat ms-1 me-1'></i>3
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
 
                         <div class="col-sm-6 col-lg-4 mb-5">
                             <a href="#" class="related-content card text-decoration-none overflow-hidden h-100">
-                                <img class="related-img card-img-top" src="{% static 'assets/img/related-post-01.jpg' %}" alt="Card image cap">
+                                <img class="related-img card-img-top" src="{% static 'assets/img/related-post-02.jpg' %}" alt="Изображение карточки">
                                 <div class="related-body card-body p-4">
-                                    <h5 class="card-title h6 m-0 semi-bold-600 text-dark">Digital Marketing</h5>
+                                    <h5 class="card-title h6 m-0 semi-bold-600 text-dark">Разработка приложений</h5>
                                     <p class="card-text pt-2 mb-1 light-300 text-dark">
-                                        Lorem ipsum dolor sit amet, consectetur.
+                                        Современные методы создания мобильных приложений.
                                     </p>
                                     <div class="d-flex justify-content-between">
-                                        <span class="text-primary light-300">Read more</span>
-                                        <div class="light-300">
-                                            <i class='bx-fw bx bx-heart me-1'></i>5
-                                            <i class='bx-fw bx bx-chat    ms-1 me-1'></i>3
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 mb-5">
-                            <a href="#" class="related-content card text-decoration-none overflow-hidden h-100">
-                                <img class="related-img card-img-top" src="{% static 'assets/img/related-post-02.jpg' %}" alt="Card image cap">
-                                <div class="related-body card-body p-4">
-                                    <h5 class="card-title h6 m-0 semi-bold-600 text-dark">App Development</h5>
-                                    <p class="card-text pt-2 mb-1 light-300 text-dark">
-                                        Tempor incididunt ut labore et dolore.
-                                    </p>
-                                    <div class="d-flex justify-content-between">
-                                        <span class="text-primary light-300">Read more</span>
+                                        <span class="text-primary light-300">Читать далее</span>
                                         <div class="light-300">
                                             <i class='bx-fw bx bx-heart me-1'></i>11
-                                            <i class='bx-fw bx bx-chat    ms-1 me-1'></i>9
+                                            <i class='bx-fw bx bx-chat ms-1 me-1'></i>9
                                         </div>
                                     </div>
                                 </div>
                             </a>
                         </div>
+
                         <div class="col-sm-6 col-lg-4 mb-5">
                             <a href="#" class="related-content card text-decoration-none overflow-hidden h-100">
-                                <img class="related-img card-img-top" src="{% static 'assets/img/related-post-03.jpg' %}" alt="Card image cap">
+                                <img class="related-img card-img-top" src="{% static 'assets/img/related-post-03.jpg' %}" alt="Изображение карточки">
                                 <div class="related-body card-body p-4">
-                                    <h5 class="card-title h6 m-0 semi-bold-600 text-dark">Digital Marketing</h5>
+                                    <h5 class="card-title h6 m-0 semi-bold-600 text-dark">Цифровой маркетинг</h5>
                                     <p class="card-text pt-2 mb-1 light-300 text-dark">
-                                        Consectetur adipiscing elit.
+                                        Основы и лучшие практики продвижения в интернете.
                                     </p>
                                     <div class="d-flex justify-content-between">
-                                        <span class="text-primary light-300">Read more</span>
+                                        <span class="text-primary light-300">Читать далее</span>
                                         <div class="light-300">
                                             <i class='bx-fw bx bx-heart me-1'></i>31
-                                            <i class='bx-fw bx bx-chat    ms-1 me-1'></i>2
+                                            <i class='bx-fw bx bx-chat ms-1 me-1'></i>2
                                         </div>
                                     </div>
                                 </div>
                             </a>
                         </div>
+
                     </div>
                 </div>
             </div>
-
+        </div>
     </article>
     <!-- End Related Post -->
 
 {% endblock %}
+

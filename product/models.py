@@ -1,6 +1,5 @@
 from django.db import models
-from django.db.models import ForeignKey
-from .constants import NULLABLE
+from user.models import MyUser
 
 class Category(models.Model):
     title = models.CharField(max_length=50, verbose_name='Название')
@@ -10,7 +9,8 @@ class Category(models.Model):
         on_delete=models.CASCADE,
         null=True,
         blank=True,
-        verbose_name='Родительская категория')
+        verbose_name='Родительская категория'
+    )
 
     class Meta:
         verbose_name = 'Категория'
@@ -31,6 +31,7 @@ class City(models.Model):
     def __str__(self):
         return self.title
 
+
 class District(models.Model):
     title = models.CharField(max_length=50, verbose_name='Название')
     city = models.ForeignKey(City, on_delete=models.PROTECT, verbose_name='Город', related_name='districts')
@@ -42,6 +43,7 @@ class District(models.Model):
 class Image(models.Model):
     estate = models.ForeignKey('Estate', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='media/additional_image')
+
 
 class Estate(models.Model):
     title = models.CharField(max_length=100, verbose_name='Название')
@@ -61,3 +63,13 @@ class Estate(models.Model):
     class Meta:
         verbose_name = 'Недвижимость'
         verbose_name_plural = 'Недвижимости'
+
+
+class Favorite(models.Model):
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    estate = models.ForeignKey(Estate, on_delete=models.CASCADE, related_name='favorites')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'estate')
+

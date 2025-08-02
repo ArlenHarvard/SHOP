@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Start Banner Hero -->
+    <div id="work_banner" class="banner-wrapper bg-light w-100 py-5">
+        <div class="banner-vertical-center-work container text-light d-flex justify-content-center align-items-center py-5 p-0">
+            <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
+                <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center">Избранные квартиры</h1>
+                <h3 class="h4 pb-2 regular-400">Ваш личный список лучших вариантов</h3>
+                <p class="banner-body pb-2 light-300">
+                    Здесь собраны квартиры, которые вы добавили в избранное.
+                    Сохраняйте понравившиеся варианты и возвращайтесь к ним в любое время.
+                    Это поможет быстрее найти жильё вашей мечты!
+                </p>
+                <button type="submit" class="btn rounded-pill btn-outline-light px-4 me-4 light-300">Подробнее</button>
+                <button type="submit" class="btn rounded-pill btn-secondary text-light px-4 light-300">Связаться с нами</button>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner Hero -->
+
+    <!-- Start Our Work -->
+<section class="container py-5">
+    <div class="row projects gx-lg-5">
+        {% for favorite in favorite_estates %}
+        <div class="col-sm-6 col-lg-4">
+            <div class="service-work overflow-hidden card mb-5">
+                <img class="card-img-top" src="{{ favorite.estate.cover.url }}" alt="{{ favorite.estate.title }}">
+                <div class="card-body">
+                    <h5 class="card-title light-300 text-dark">{{ favorite.estate.title }}</h5>
+                    <p class="card-text light-300 text-dark">
+                        {{ favorite.estate.descriptions|truncatewords:20 }}
+                    </p>
+                    <a href="{% url 'detail' favorite.estate.id %}" class="text-decoration-none text-primary light-300">
+                        Подробнее <i class='bx bxs-hand-right ms-1'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">У вас пока нет избранных квартир.</p>
+        {% endfor %}
+    </div>
+</section>
+    <!-- End Our Work -->
+
+{% endblock %}

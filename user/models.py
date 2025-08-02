@@ -3,6 +3,8 @@ from django.contrib.auth.models import  AbstractBaseUser, BaseUserManager
 
 from product.constants import NULLABLE
 from user.choices import MyUserRoleEnum
+from django.utils import timezone
+
 
 class MyUserManager(BaseUserManager):
     def create_user(self, username, email, password=None):
@@ -30,7 +32,7 @@ class MyUserManager(BaseUserManager):
 
 
 class MyUser(AbstractBaseUser):
-    username = models.CharField(max_length=20, verbose_name='Имя пользователя')
+    username = models.CharField(max_length=20, verbose_name='Именем пользователя')
     email = models.EmailField(unique=True, verbose_name='Электронная почта')
     avatar = models.ImageField(upload_to='media/avatar_image', **NULLABLE)
     role = models.CharField(
@@ -68,3 +70,12 @@ class MyUser(AbstractBaseUser):
         """Is the user a member of staff?"""
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
+
+class OTP(models.Model):
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    code = models.CharField(max_length=6)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def is_valid(self):
+        return (timezone.now() - self.created_at).total_seconds() <= 60

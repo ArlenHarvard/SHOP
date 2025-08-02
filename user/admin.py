@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MyUser
+from .models import *
 
 from django import forms
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
@@ -84,3 +84,4 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.register(MyUser, UserAdmin)
+admin.site.register(OTP)

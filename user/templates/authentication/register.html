@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center py-5" style="min-height: 80vh;">
+    <div class="auth-card w-100" style="max-width: 420px; border-radius: 1rem; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.15); background: white;">
+
+        <!-- Заголовок -->
+        <div class="text-center text-white py-3" style="background: linear-gradient(135deg, #6c63ff, #836fff); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+            <h3 class="mb-0">Регистрация</h3>
+        </div>
+
+        <!-- Форма -->
+        <div class="p-4">
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        {% for field, errors in form.errors.items %}
+                            {% for error in errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="form-label">Имя пользователя</label>
+                    {{ form.username }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    {{ form.email }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Пароль</label>
+                    {{ form.password1 }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Подтверждение пароля</label>
+                    {{ form.password2 }}
+                </div>
+
+                <button type="submit" class="btn w-100" style="background:#6c63ff; color:white; border-radius:999px;">
+                    Зарегистрироваться
+                </button>
+            </form>
+
+            <p class="text-center mt-3">
+                Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
