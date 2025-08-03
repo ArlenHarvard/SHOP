@@ -38,7 +38,7 @@
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="#">О нас</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="#">Квартиры</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="{% url 'estate_list'%}">Квартиры</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="#">Цены</a>
@@ -49,8 +49,17 @@
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
-                    <a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-primary'></i></a>
+
+                    {% if user.is_authenticated %}
+    <a href="{% url 'manage_2fa' %}" title="Настройки двухэтапной аутентификации">
+        <i class="bx bx-cog bx-sm text-primary"></i>
+    </a>
+{% else %}
+    <a href="{% url 'login' %}?next={% url 'manage_2fa' %}" title="Войдите в систему, чтобы изменить настройки">
+        <i class="bx bx-cog bx-sm text-primary"></i>
+    </a>
+{% endif %}
+
 
                     <!-- Выпадающее меню профиля -->
                     <div class="dropdown">

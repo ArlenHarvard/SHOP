@@ -22,7 +22,7 @@
                                 Мы предлагаем широкий выбор квартир в разных районах города —
                                 от уютных студий до просторных апартаментов.
                             </p>
-                            <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">Смотреть квартиры</a>
+                            <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="{% url 'estate_list' %}" role="button">Смотреть квартиры</a>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                                 Мы поможем вам купить или арендовать жильё по выгодной цене.
                                 Надёжные застройщики, проверенные объекты.
                             </p>
-                            <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">Подробнее</a>
+                            <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="{% url 'estate_list' %}" role="button">Подробнее</a>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                                 Подберите квартиру рядом с парками, школами и магазинами.
                                 Мы заботимся о том, чтобы ваш выбор был максимально удобным.
                             </p>
-                            <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">Выбрать квартиру</a>
+                            <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="{% url 'estate_list' %}" role="button">Выбрать квартиру</a>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                 <p class="light-300">Тысячи довольных клиентов уже приобрели квартиры с нашей помощью.</p>
             </div>
             <div class="col-lg-3 col-12 pt-4">
-                <a href="#" class="btn btn-primary rounded-pill btn-block shadow px-4 py-2">Наши предложения</a>
+                <a href="{% url 'estate_list' %}" class="btn btn-primary rounded-pill btn-block shadow px-4 py-2">Наши предложения</a>
             </div>
         </div>
     </div>
@@ -96,7 +96,9 @@
         <div class="row gy-5 g-lg-5 mb-4">
             {% for category in parent_categories %}
             <div class="col-md-4 mb-3">
-               <a href="?category={{ category.id }}" class="recent-work card border-0 shadow-lg overflow-hidden">
+               <a href="{% url 'estate_list' %}?category={{ category.id }}"
+   class="recent-work card border-0 shadow-lg overflow-hidden">
+
                     <img class="recent-work-img card-img" src="{{ category.image.url }}" alt="Категория"
                          style="width: 100%; height: 200px; object-fit: cover;">
                     <div class="recent-work-vertical card-img-overlay d-flex align-items-end">

@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import  AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import  AbstractBaseUser, BaseUserManager, AbstractUser
 
 from product.constants import NULLABLE
 from user.choices import MyUserRoleEnum
@@ -33,6 +33,7 @@ class MyUserManager(BaseUserManager):
 
 class MyUser(AbstractBaseUser):
     username = models.CharField(max_length=20, verbose_name='Именем пользователя')
+    is_2fa_enabled = models.BooleanField(default=False, verbose_name='Включена 2FA')
     email = models.EmailField(unique=True, verbose_name='Электронная почта')
     avatar = models.ImageField(upload_to='media/avatar_image', **NULLABLE)
     role = models.CharField(
@@ -42,9 +43,7 @@ class MyUser(AbstractBaseUser):
         verbose_name='Статус'
     )
     balance = models.DecimalField(default=0, decimal_places=2, max_digits=12, verbose_name='Баланс')
-    is_admin = models.BooleanField(
-        default=False
-    )
+    is_admin = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
 
     objects = MyUserManager()
@@ -54,6 +53,9 @@ class MyUser(AbstractBaseUser):
 
     def __str__(self):
         return self.email
+
+    # остальные методы...
+
 
     def has_perm(self, perm, obj=None):
         """Does the user have a specific permission?"""
@@ -79,3 +81,4 @@ class OTP(models.Model):
 
     def is_valid(self):
         return (timezone.now() - self.created_at).total_seconds() <= 60
+

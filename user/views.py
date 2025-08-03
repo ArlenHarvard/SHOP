@@ -7,6 +7,7 @@ from .models import *
 from .forms import  *
 from .services import generate_otp_code
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 
 def user_register_view(request):
@@ -46,23 +47,30 @@ def user_login_view(request):
             user = authenticate(request, username=user_email, password=user_password)
 
             if user:
-                otp_code = generate_otp_code()
-                OTP.objects.create(
-                    user=user,
-                    code=otp_code
-                )
+                # Проверяем, включена ли 2FA
+                if user.is_2fa_enabled:
+                    # Генерируем и отправляем OTP-код
+                    otp_code = generate_otp_code()
+                    OTP.objects.create(
+                        user=user,
+                        code=otp_code
+                    )
 
+                    send_mail(
+                        "Одноразовый код",
+                        f"{otp_code}",
+                        settings.DEFAULT_FROM_EMAIL,
+                        [user_email],
+                        fail_silently=False,
+                    )
+                    messages.success(request, "Одноразовый код отправлен на вашу почту")
+                    return redirect('otp_verify', user.id)
+                else:
+                    # Если 2FA выключена, сразу логиним пользователя
+                    login(request, user)
+                    messages.success(request, "Вы успешно вошли в систему")
+                    return redirect('index')
 
-                send_mail(
-                    "Одноразовый код",
-                    f"{otp_code }",
-                    settings.DEFAULT_FROM_EMAIL,
-                    [user_email],
-                    fail_silently=False,
-
-                )
-                messages.success(request, "Одноразовый код отправлен на вашу почту")
-                return redirect('otp_verify', user.id)
             else:
                 messages.error(request, 'Неправильный логин или пароль')
     else:
@@ -114,3 +122,26 @@ def otp_verify_view(request, user_id):
         "authentication/otp_verify.html",
         {"user_id": user.id}
     )
+
+
+
+@login_required
+def user_profile(request):
+    return render(request, 'authentication/profile.html')
+
+
+@login_required
+def manage_2fa(request):
+    user = request.user
+
+    if request.method == 'POST':
+        user.is_2fa_enabled = not user.is_2fa_enabled
+        user.save()
+        if user.is_2fa_enabled:
+            messages.success(request, "✅ Двухэтапная аутентификация включена")
+        else:
+            messages.warning(request, "❌ Двухэтапная аутентификация выключена")
+        return redirect('manage_2fa')
+
+    return render(request, 'authentication/manage_2fa.html', {'user': user})
+

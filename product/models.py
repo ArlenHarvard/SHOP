@@ -73,3 +73,12 @@ class Favorite(models.Model):
     class Meta:
         unique_together = ('user', 'estate')
 
+class Feedback(models.Model):
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    estate = models.ForeignKey(Estate, on_delete=models.CASCADE, related_name='feedbacks')
+    parent = models.ForeignKey("self", on_delete=models.CASCADE, null=True, blank=True, related_name="replies")
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user} --> {self.estate}'

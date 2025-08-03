@@ -41,11 +41,9 @@
 
         <div class="row pt-5">
             <div class="worksingle-content col-lg-8 m-auto text-left justify-content-center">
-                <h2 class="worksingle-heading h3 pb-3 light-300 typo-space-line">Наши услуги</h2>
+                <h2 class="worksingle-heading h3 pb-3 light-300 typo-space-line">{{ estate.title }}</h2>
                 <p class="worksingle-footer py-3 text-muted light-300">
-                    Мы помогаем купить или арендовать квартиры и дома в вашем городе.
-                    В нашей базе вы найдёте современные новостройки, уютные квартиры в центре и просторные дома для всей семьи.
-                    Мы предоставляем консультации и полное сопровождение сделок.
+                    {{ estate.descriptions }}
                 </p>
             </div>
         </div><!-- Конец описания -->
@@ -54,7 +52,7 @@
         <div class="row justify-content-center pb-4">
             <div class="col-lg-8">
                 <div id="templatemo-slide-link-target" class="card mb-3">
-                    <img class="img-fluid border rounded" src="{% static 'assets/img/work-slide-04.jpg' %}" alt="Фото недвижимости">
+                    <img class="img-fluid border rounded" src="{{ estate.cover.url }}" alt="Фото недвижимости">
                 </div>
                 <div class="worksingle-slide-footer row">
 
@@ -179,7 +177,7 @@
          <div class="row justify-content-center">
             <div class="col-lg-8 pt-4 pb-4">
                 <div class="ratio ratio-16x9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1z--ZRS5x5U" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item" src="{{ estate.video.url}}" allowfullscreen></iframe>
                 </div>
             </div>
         </div><!-- End Video -->
@@ -202,140 +200,81 @@
                 <h4 class="h5">Комментарии</h4>
             </div>
         </div>
+{% for feedback in feedbacks %}
 
-        <div class="row pb-4">
-            <div class="worksingle-comment-body col-md-8 m-auto">
-                <div class="d-flex">
-                    <div>
-                        <img class="rounded-circle" src="{% static 'assets/img/team-05.jpg' %}" style="width: 50px;">
-                    </div>
-                    <div class="comment-body">
-                        <div class="comment-header d-flex justify-content-between ms-3">
-                            <div class="header text-start">
-                                <h5 class="h6">Иван Петров</h5>
-                                <p class="text-muted light-300">10 минут назад</p>
-                            </div>
-                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Ответить</a>
+    <div class="row pb-4">
+        <div class="worksingle-comment-body col-md-8 m-auto">
+            <div class="d-flex">
+                <div>
+                    <img class="rounded-circle" src="{% static 'assets/img/team-05.jpg' %}" style="width: 50px;">
+                </div>
+                <div class="comment-body">
+                    <div class="comment-header d-flex justify-content-between ms-3">
+                        <div class="header text-start">
+                            <h5 class="h6">{{ feedback.user.username }}</h5>
+                            <p class="text-muted light-300">{{ feedback.created_at|timesince }} назад</p>
                         </div>
-                        <div class="footer">
-                            <div class="card-body border ms-3 light-300">
-                                Очень понравился выбор квартир, особенно варианты в центре.
-                                Цены доступные, описание совпадает с реальностью. Спасибо!
-                            </div>
+                        <!-- Кнопка для показа формы ответа -->
+                        <a href="#" class="reply-btn text-decoration-none text-secondary"
+                           data-parent="{{ feedback.id }}">
+                           <i class='bx bxs-share me-2'></i>Ответить
+                        </a>
+                    </div>
+                    <div class="footer">
+                        <div class="card-body border ms-3 light-300">
+                            {{ feedback.comment }}
                         </div>
                     </div>
+
+                    <!-- Выводим ответы -->
+                    {% for reply in feedback.replies.all %}
+                        <div class="ms-5 mt-2 border-start ps-3">
+                            <strong>{{ reply.user.username }}</strong>
+                            <p class="text-muted light-300">{{ reply.created_at|timesince }} назад</p>
+                            <div>{{ reply.comment }}</div>
+                        </div>
+                    {% endfor %}
+
+                    <!-- Скрытая форма ответа -->
+                    <form method="POST" action="{% url 'feedback' estate.id %}" class="reply-form mt-2 d-none">
+                        {% csrf_token %}
+                        <input type="hidden" name="parent_id" value="{{ feedback.id }}">
+                        <textarea name="comment" class="form-control mb-2" placeholder="Ваш ответ..."></textarea>
+                        <button type="submit" class="btn btn-sm btn-primary">Отправить</button>
+                    </form>
                 </div>
             </div>
-        </div><!-- End Comment -->
+        </div>
+    </div>
+{% endfor %}
 
 
-        <div class="row pb-4">
-            <div class="col-lg-8 m-auto">
-                <div class="d-flex">
-                    <div>
-                        <img class="rounded-circle" src="{% static 'assets/img/team-01.jpg' %}" style="width: 50px;">
-                    </div>
-                    <div class="comment-body">
-                        <div class="comment-header d-flex justify-content-between ms-3">
-                            <div class="header text-start">
-                                <h5 class="h6">Анна Смирнова</h5>
-                                <p class="text-muted light-300">5 минут назад</p>
-                            </div>
-                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Ответить</a>
-                        </div>
-                        <div class="footer">
-                            <div class="card-body border ms-3 light-300">
-                                Нашла здесь отличный дом для своей семьи.
-                                Сервис на высоком уровне, консультанты всегда на связи.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+<div class="row pb-4">
+    <div class="worksingle-comment-footer col-lg-8 m-auto">
+        <h4 class="h5">Оставить комментарий</h4>
+        <form class="col-md-12 m-auto" method="post" action="{% url 'feedback' estate.id %}" role="form">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label class="pb-2 pt-sm-0 pt-4 light-300" for="inputmessage">Ваш комментарий</label>
+                <textarea class="form-control form-control-lg light-300"
+                          id="inputmessage"
+                          name="comment"
+                          placeholder="Ваш комментарий"
+                          rows="5"
+                          required></textarea>
             </div>
-        </div><!-- End Comment -->
 
-
-         <div class="row pb-4">
-            <div class="col-lg-8 m-auto">
-                <div class="d-flex ml-4">
-                    <div>
-                        <img class="rounded-circle" src="{% static 'assets/img/team-05.jpg' %}" style="width: 50px;">
-                    </div>
-                    <div class="comment-body">
-                        <div class="comment-header d-flex justify-content-between ms-3">
-                            <div class="header text-start">
-                                <h5 class="h6">Алексей Иванов</h5>
-                                <p class="text-muted light-300">15 минут назад</p>
-                            </div>
-                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Ответить</a>
-                        </div>
-                        <div class="footer">
-                            <div class="card-body border ms-3 light-300">
-                                Отличный сервис, всё подробно описано. Уже присмотрел квартиру для покупки,
-                                думаю скоро заключать сделку.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary px-4 py-2">
+                    Отправить
+                </button>
             </div>
-        </div><!-- End Comment -->
+        </form>
+    </div>
+</div>
 
-
-        <div class="row pb-4">
-            <div class="col-lg-8 m-auto">
-                <div class="d-flex ml-5">
-                    <div>
-                        <img class="rounded-circle" src="{% static 'assets/img/team-01.jpg' %}" style="width: 50px;">
-                    </div>
-                    <div class="comment-body">
-                        <div class="comment-header d-flex justify-content-between ms-3">
-                            <div class="header text-start">
-                                <h5 class="h6">Мария Кузнецова</h5>
-                                <p class="text-muted light-300">16 минут назад</p>
-                            </div>
-                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Ответить</a>
-                        </div>
-                        <div class="footer">
-                            <div class="card-body border ms-3 light-300">
-                                Благодарю за помощь в подборе жилья. Очень удобно,
-                                что всё можно посмотреть онлайн и получить консультацию сразу.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- End Comment -->
-
-
-        <div class="row pb-4">
-            <div class="worksingle-comment-footer col-lg-8 m-auto">
-                <h4 class="h5">Оставить комментарий</h4>
-                <form class="col-md-12 m-auto" method="POST" action="#" role="form">
-
-                    <div class="form-group">
-                        <label class="pb-2 pt-sm-0 pt-4 light-300" for="inputmessage">Ваш комментарий</label>
-                        <textarea class="form-control form-control-lg light-300" id="inputmessage" name="inputmessage" placeholder="Ваш комментарий" rows="5"></textarea>
-                    </div>
-
-                    <div class="row py-4">
-                        <div class="col-lg-6">
-                            <label class="pb-2 light-300" for="inputname">Имя</label>
-                            <input type="text" class="form-control form-control-lg light-300" id="inputname" name="inputname" placeholder="Имя">
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="pb-2 pt-sm-0 pt-4 light-300" for="inputemail">Email</label>
-                            <input type="email" class="form-control form-control-lg light-300" id="inputemail" name="inputemail" placeholder="Email">
-                        </div>
-                    </div>
-
-                    <div class="form-row pt-2">
-                        <div class="col-md-12 col-10 text-end">
-                            <button type="submit" class="btn btn-secondary text-white px-md-4 px-2 py-md-3 py-1 radius-0 light-300">Отправить</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div><!-- End Comment Form -->
 
     </section>
     <!-- End Work Single -->
@@ -347,70 +286,50 @@
                 <h1 class="h2 py-5">Похожие статьи</h1>
                 <div class="col-md-12 text-left justify-content-center">
                     <div class="row gx-5">
-
+                    {% for recommended_estate in recommended_estates %}
                         <div class="col-sm-6 col-lg-4 mb-5">
-                            <a href="#" class="related-content card text-decoration-none overflow-hidden h-100">
-                                <img class="related-img card-img-top" src="{% static 'assets/img/related-post-01.jpg' %}" alt="Изображение карточки">
+                            <a href=" url 'detail' recommended_estate.id " class="related-content card text-decoration-none overflow-hidden h-100">
+                                <img class="related-img card-img-top" src="{{ recommended_estate.cover.url }}" alt="Изображение карточки">
                                 <div class="related-body card-body p-4">
-                                    <h5 class="card-title h6 m-0 semi-bold-600 text-dark">Цифровой маркетинг</h5>
+                                    <h5 class="card-title h6 m-0 semi-bold-600 text-dark">{{ recommended_estate.title }}</h5>
                                     <p class="card-text pt-2 mb-1 light-300 text-dark">
-                                        Краткий обзор современных тенденций в маркетинге.
+                                       {{ recommended_estate.descriptions }}
                                     </p>
                                     <div class="d-flex justify-content-between">
                                         <span class="text-primary light-300">Читать далее</span>
                                         <div class="light-300">
-                                            <i class='bx-fw bx bx-heart me-1'></i>5
+                                            <i class='bx-fw bx bx-heart me-1'></i>{{ estates_like }}
                                             <i class='bx-fw bx bx-chat ms-1 me-1'></i>3
                                         </div>
                                     </div>
                                 </div>
                             </a>
                         </div>
-
-                        <div class="col-sm-6 col-lg-4 mb-5">
-                            <a href="#" class="related-content card text-decoration-none overflow-hidden h-100">
-                                <img class="related-img card-img-top" src="{% static 'assets/img/related-post-02.jpg' %}" alt="Изображение карточки">
-                                <div class="related-body card-body p-4">
-                                    <h5 class="card-title h6 m-0 semi-bold-600 text-dark">Разработка приложений</h5>
-                                    <p class="card-text pt-2 mb-1 light-300 text-dark">
-                                        Современные методы создания мобильных приложений.
-                                    </p>
-                                    <div class="d-flex justify-content-between">
-                                        <span class="text-primary light-300">Читать далее</span>
-                                        <div class="light-300">
-                                            <i class='bx-fw bx bx-heart me-1'></i>11
-                                            <i class='bx-fw bx bx-chat ms-1 me-1'></i>9
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-sm-6 col-lg-4 mb-5">
-                            <a href="#" class="related-content card text-decoration-none overflow-hidden h-100">
-                                <img class="related-img card-img-top" src="{% static 'assets/img/related-post-03.jpg' %}" alt="Изображение карточки">
-                                <div class="related-body card-body p-4">
-                                    <h5 class="card-title h6 m-0 semi-bold-600 text-dark">Цифровой маркетинг</h5>
-                                    <p class="card-text pt-2 mb-1 light-300 text-dark">
-                                        Основы и лучшие практики продвижения в интернете.
-                                    </p>
-                                    <div class="d-flex justify-content-between">
-                                        <span class="text-primary light-300">Читать далее</span>
-                                        <div class="light-300">
-                                            <i class='bx-fw bx bx-heart me-1'></i>31
-                                            <i class='bx-fw bx bx-chat ms-1 me-1'></i>2
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
+                    {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
     </article>
     <!-- End Related Post -->
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".reply-btn").forEach(function(btn) {
+        btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            let parentId = this.dataset.parent;
+            let form = this.closest(".comment-body").querySelector(".reply-form");
+            form.classList.toggle("d-none"); // показываем/скрываем форму
+        });
+    });
+});
+</script>
+
 
 {% endblock %}
 

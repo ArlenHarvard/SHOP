@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>Профиль пользователя {{ user.username }}</h1>
+<p>Email: {{ user.email }}</p>
+
+<!-- Кнопка/ссылка для перехода на управление 2FA -->
+<a href="{% url 'manage_2fa' %}" class="btn btn-primary">
+    Управление двухэтапной аутентификацией
+</a>
+
+{% endblock %}
